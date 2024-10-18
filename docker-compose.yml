@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  smartcityapi:
+    image: smartcityapi:latest
+    container_name: smartcityapi
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__DefaultConnection=Host=db;Database=smartcitydb;Username=postgres;Password=adm
+
+  db:
+    image: postgres:latest
+    container_name: db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: adm
+      POSTGRES_DB: smartcitydb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
