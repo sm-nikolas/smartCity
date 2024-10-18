@@ -21,3 +21,45 @@ Clone o repositório do GitHub para sua máquina local:
 git clone https://github.com/sm-nikolas/SmartCityApi.git
 cd SmartCityApi
 ```
+
+### 2. Configurar o Banco de Dados
+
+Certifique-se de que o PostgreSQL esteja em execução. Você pode criar um banco de dados chamado SmartCityDb com o seguinte comando:
+
+```bash
+CREATE DATABASE SmartCityDb;
+```
+
+### 3. Configurar as Variáveis de Ambiente
+
+Antes de executar a aplicação, configure as variáveis de ambiente necessárias. Você pode criar um arquivo .env na raiz do projeto e adicionar as seguintes variáveis:
+
+```bash
+ConnectionStrings__DefaultConnection=Host=localhost;Database=SmartCityDb;Username=seu_usuario;Password=sua_senha
+```
+
+### 4. Executar as Migrações
+
+Para criar as tabelas no banco de dados, execute as migrações utilizando o seguinte comando:
+
+```bash
+dotnet ef database update
+```
+
+### 5. Iniciar a Aplicação
+
+Para iniciar a API, utilize o seguinte comando:
+
+```bash
+dotnet run
+```
+
+## Containerização
+
+Este projeto também pode ser containerizado usando Docker. Para construir e executar o contêiner, utilize os seguintes comandos:
+
+```bash
+docker build -t smartcityapi .
+docker run -d -p 5000:80 smartcityapi
+```
+
