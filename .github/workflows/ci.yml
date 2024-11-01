@@ -32,9 +32,8 @@ jobs:
         run: dotnet build --configuration Release --no-restore
 
       # 4. Run tests
-      # Comentado para implementação futura
-      # - name: Run tests
-      #   run: dotnet test --no-restore --verbosity normal
+      - name: Run tests
+        run: dotnet test --no-restore --verbosity normal
 
       # 5. Build da imagem Docker
       - name: Build Docker image
